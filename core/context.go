@@ -9,5 +9,6 @@ type RequestContext struct {
 	UA       string
 	Score    int
 	Decision string
+	reason   string
 	Request  *http.Request
 }

@@ -31,5 +31,6 @@ func PreFilter(ctx *RequestContext, cfg *Config) {
 	// suspicious UA
 	if strings.TrimSpace(ctx.UA) == "" {
 		ctx.Score += 3
+		ctx.reason = "prefilter"
 	}
 }

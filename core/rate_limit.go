@@ -46,6 +46,7 @@ func RateLimit(ctx *RequestContext, cfg *Config) {
 
 		if entry.Count > limit {
 			ctx.Score += 10
+			ctx.reason = "rate_limit"
 		}
 
 		rateMutex.Unlock()
