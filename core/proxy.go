@@ -20,6 +20,11 @@ func NewIronLayer(cfg *Config) http.Handler {
 		BehaviorCheck(ctx, cfg)
 		Decision(ctx)
 
+		if CheckBan(ctx.IP) {
+			http.Error(w, "IP banned", http.StatusForbidden)
+			return
+		}
+
 		if ctx.Decision == "block" {
 			http.Error(w, "Forbidden", http.StatusForbidden)
 			return

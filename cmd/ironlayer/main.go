@@ -10,7 +10,7 @@ import (
 func main() {
 	cfg := core.LoadConfig("config.yaml")
 
-	core.StartCleanup()
+	core.StartBanCleanup()
 
 	handler := core.NewIronLayer(cfg)
 

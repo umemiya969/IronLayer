@@ -2,16 +2,15 @@ package core
 
 import "time"
 
-func StartCleanup() {
+func StartBanCleanup() {
 	go func() {
 		for {
-			time.Sleep(30 * time.Second)
+			time.Sleep(1 * time.Minute)
 
 			now := time.Now()
-
-			for k, v := range rateStore {
-				if now.After(v.Expires) {
-					delete(rateStore, k)
+			for ip, b := range banStore {
+				if !b.Permanent && now.After(b.BanUntil) {
+					delete(banStore, ip)
 				}
 			}
 		}
