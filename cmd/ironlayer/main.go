@@ -10,6 +10,8 @@ import (
 func main() {
 	cfg := core.LoadConfig("config.yaml")
 
+	core.StartCleanup()
+
 	handler := core.NewIronLayer(cfg)
 
 	log.Println("IronLayer running on", cfg.Server.Listen)
